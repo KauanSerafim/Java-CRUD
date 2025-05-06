@@ -87,3 +87,9 @@ This file is **not versioned on Git** (ignored via `.gitignore`) to protect sens
 | Maven | Simplifies dependency and build management. |
 | Modular Structure (Connection, Repository, Domain, Service) | Enhances maintainability, testing, and scalability. |
 | Log4j2 | Enables error tracking and logging of important events. |
+
+---
+
+## 🪪 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
