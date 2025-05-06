@@ -1,7 +1,6 @@
 package service;
 
 import domain.Dorama;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 import repository.DoramaRepository;
 
@@ -14,7 +13,7 @@ public class DoramaService {
     private static Scanner sc = new Scanner(System.in);
 
     public static void menu() {
-        System.out.println("Type the number of the operation");
+        System.out.println("\nType the number of the operation");
         System.out.println("1. Search for Dorama");
         System.out.println("2. Save Dorama");
         System.out.println("3. Uptate Dorama Title");
@@ -33,11 +32,11 @@ public class DoramaService {
     }
 
     private static void findByName() {
-        System.out.printf("Type the Dorama title you wish to find: ");
+        System.out.printf("Type the Dorama title you wish to find or Enter to list all Doramas: ");
         String doramaName = sc.nextLine();
-        log.info("Seraching Dorama with name " + doramaName);
+        log.info("Searching Dorama");
         List<Dorama> byTitle = DoramaRepository.findByTitle(doramaName);
-        byTitle.forEach(d -> System.out.printf("Dorama found.\nTitle: %s | Release Year: %d | Score: %.1f%n"
+        byTitle.forEach(d -> System.out.printf("Title: %s | Release Year: %d | Score: %.1f%n"
                 , d.getTitle(), d.getReleaseYear(), d.getScore()));
     }
 
