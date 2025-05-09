@@ -77,6 +77,40 @@ public class DoramaRepository {
         return ps;
     }
 
+    public static void updateScore(Dorama dorama) {
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createPrepareStatementUpdateScore(conn, dorama)) {
+            ps.execute();
+        } catch (SQLException e) {
+            log.error("Error while trying to update Dorama.", e);
+        }
+    }
+
+    private static PreparedStatement createPrepareStatementUpdateScore(Connection conn, Dorama dorama) throws SQLException {
+        String sql = "UPDATE `dorama`.`k_dorama` SET `score` = ? WHERE (`id` = ?);";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setDouble(1, dorama.getScore());
+        ps.setInt(2, dorama.getId());
+        return ps;
+    }
+
+    public static void updateReleaseYear(Dorama dorama) {
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createPrepareStatementUpdateReleaseYear(conn, dorama)) {
+            ps.execute();
+        } catch (SQLException e) {
+            log.error("Error while trying to update Dorama.", e);
+        }
+    }
+
+    private static PreparedStatement createPrepareStatementUpdateReleaseYear(Connection conn, Dorama dorama) throws SQLException {
+        String sql = "UPDATE `dorama`.`k_dorama` SET `release_year` = ? WHERE (`id` = ?);";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, dorama.getReleaseYear());
+        ps.setInt(2, dorama.getId());
+        return ps;
+    }
+
     public static Optional<Dorama> findById(Integer id) {
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement ps = createPrepareStatementFindById(conn, id);

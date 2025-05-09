@@ -14,6 +14,13 @@ public class Main {
             int i = Integer.parseInt(sc.nextLine());
             if (i == 0) break;
             DoramaService.menuOperation(i);
+            if (i == 3) {
+                while (true) {
+                    int j = Integer.parseInt(sc.nextLine());
+                    if (j == 4) break;
+                    DoramaService.updateOperation(j);
+                }
+            }
         }
     }
 }
