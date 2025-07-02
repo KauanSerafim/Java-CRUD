@@ -51,7 +51,27 @@ docker-compose up -d
 
 ## 🔐 Database Configuration
 The application.properties file includes the necessary configurations to connect to MySQL.
-Use the `TemplateApplication.properties` as a template to create your **application.properties**
+Use the `TemplateApplication.properties` as a template to create the **application.properties** file.
+---
+
+## 🔒 Environment Variables
+
+This project leverages **environment variables** to manage sensitive configurations, particularly for the database. These variables are loaded from a `.env` file, ensuring that sensitive data like database credentials are **not hardcoded** directly into the `docker-compose.yml` or versioned in the Git repository.
+
+### Why use environment variables?
+
+* **Security**: Prevents sensitive information (e.g., database passwords) from being exposed publicly in your repository.
+* **Flexibility**: Allows easy configuration for different environments (development, testing, production) without modifying code.
+* **Organization**: Centralizes all environment-specific settings in one accessible location.
+
+### How it works
+
+The `docker-compose.yml` file references variables like `${ENV_MYSQL_DATABASE}`, `${ENV_DB_PASSWORD}`, and `${ENV_DB_USER}`. When you run `docker-compose up`, Docker Compose automatically reads these values from a `.env` file located in the same directory as your `docker-compose.yml` and injects them into the MySQL container.
+
+**Example `.env` file (this file should NOT be committed to Git):**
+
+This file is **not versioned on Git** (ignored via `.gitignore`) to protect sensitive data.
+Use the `.envTemplate` as a template to create the **.env** file.
 
 ---
 
@@ -115,7 +135,7 @@ DoramaControllerTest — Tests API endpoints with mocked service and util.
 | Logging | Logs timestamped operations with a custom DateUtil. |
 | API Documentation | Clear, interactive docs with SpringDoc Swagger. |
 | Unit & Integration Testing | Testing	Thorough testing of business logic and endpoints. |
-| .env | Separates sensitive configurations from code. |
+| Environment Variables | Separates sensitive configurations from code. |
 
 ---
 
