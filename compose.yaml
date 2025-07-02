@@ -1,0 +1,14 @@
+services:
+  mysql:
+    image: mysql:9.0.1
+    environment:
+      MYSQL_DATABASE: ${ENV_MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${ENV_DB_PASSWORD}
+      MYSQL_USER: ${ENV_DB_USER}
+    ports:
+      - "3306:3306"
+    volumes:
+      - crud-api-db:/var/lib/mysql
+
+volumes:
+  crud-api-db:
