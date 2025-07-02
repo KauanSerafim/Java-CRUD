@@ -50,8 +50,10 @@ docker-compose up -d
 ---
 
 ## 🔐 Database Configuration
+
 The application.properties file includes the necessary configurations to connect to MySQL.
 Use the `TemplateApplication.properties` as a template to create the **application.properties** file.
+
 ---
 
 ## 🔒 Environment Variables
